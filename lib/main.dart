@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample_app/HomePage.dart';
+import 'package:sample_app/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,7 @@ class LoginPage extends StatelessWidget {
     );
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => HomePage()),
+      MaterialPageRoute(builder: (context) => Home()),
     );
   }
 
