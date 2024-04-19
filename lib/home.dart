@@ -1,21 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/widgets.dart';
 
 class Home extends StatelessWidget {
+  // Define a data model for each item in the list
+  final List<Map<String, dynamic>> itemList = [
+    {'color': Colors.red, 'icon': Icons.access_alarm, 'text': 'Red'},
+    {'color': Colors.blue, 'icon': Icons.access_time, 'text': 'Blue'},
+    {'color': Colors.green, 'icon': Icons.accessibility_new, 'text': 'Green'},
+    {'color': Colors.yellow, 'icon': Icons.account_circle, 'text': 'Yellow'},
+    {
+      'color': Colors.orange,
+      'icon': Icons.account_balance_wallet,
+      'text': 'Orange'
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 219, 218, 218),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 96, 33, 243),
         title: Text(
-          'Home Page',
+          'Home ',
           style: TextStyle(
             color: Colors.white, // Set the font color to white
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: ListView(
         children: [
           Container(
             color: Color.fromARGB(255, 96, 33, 243),
@@ -36,8 +49,7 @@ class Home extends StatelessWidget {
             ),
           ),
           Container(
-            color: Color.fromARGB(
-                255, 96, 33, 243), // Same background color as search section
+            color: Color.fromARGB(255, 96, 33, 243),
             padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,16 +67,14 @@ class Home extends StatelessWidget {
                   },
                   child: Text(
                     'See All',
-                    style: TextStyle(
-                        color: const Color.fromARGB(255, 255, 255, 255)),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: Color.fromARGB(
-                255, 96, 33, 243), // Same background color as search section
+            color: Color.fromARGB(255, 96, 33, 243),
             padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: SizedBox(
               height: 100, // Adjust height as needed
@@ -97,7 +107,7 @@ class Home extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Payments',
+                  'Elements Section',
                   style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -113,6 +123,153 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+          SizedBox(
+            height: 150, // Set the height of the grid
+            child: ListView(
+              // This next line does the trick.
+              scrollDirection: Axis.horizontal,
+              children: itemList.map((item) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0), // Add padding here
+                  child: Container(
+                    width: 160,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:
+                          BorderRadius.circular(10.0), // Add border radius
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(item['icon'],
+                            color: Color.fromARGB(255, 96, 33, 243), size: 50),
+                        const SizedBox(height: 10),
+                        Text(
+                          item['text'],
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 96, 33, 243)),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Elements Section',
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 96, 33, 243)),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // Handle "See All" action
+                  },
+                  child: Text(
+                    'See All',
+                    style: TextStyle(color: Color.fromARGB(255, 96, 33, 243)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 150, // Set the height of the grid
+            child: ListView(
+              // This next line does the trick.
+              scrollDirection: Axis.horizontal,
+              children: itemList.map((item) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0), // Add padding here
+                  child: Container(
+                    width: 160,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:
+                          BorderRadius.circular(10.0), // Add border radius
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(item['icon'],
+                            color: Color.fromARGB(255, 96, 33, 243), size: 50),
+                        const SizedBox(height: 10),
+                        Text(
+                          item['text'],
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 96, 33, 243)),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Elements Section',
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 96, 33, 243)),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // Handle "See All" action
+                  },
+                  child: Text(
+                    'See All',
+                    style: TextStyle(color: Color.fromARGB(255, 96, 33, 243)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 150, // Set the height of the grid
+            child: ListView(
+              // This next line does the trick.
+              scrollDirection: Axis.horizontal,
+              children: itemList.map((item) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0), // Add padding here
+                  child: Container(
+                    width: 160,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:
+                          BorderRadius.circular(10.0), // Add border radius
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(item['icon'],
+                            color: Color.fromARGB(255, 96, 33, 243), size: 50),
+                        const SizedBox(height: 10),
+                        Text(
+                          item['text'],
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 96, 33, 243)),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ],
