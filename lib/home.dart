@@ -2,21 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/widgets.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
   // Define a data model for each item in the list
-  final List<Map<String, dynamic>> itemList = [
-    {'color': Colors.red, 'icon': Icons.access_alarm, 'text': 'Red'},
-    {'color': Colors.blue, 'icon': Icons.access_time, 'text': 'Blue'},
-    {'color': Colors.green, 'icon': Icons.accessibility_new, 'text': 'Green'},
-    {'color': Colors.yellow, 'icon': Icons.account_circle, 'text': 'Yellow'},
-    {
-      'color': Colors.orange,
-      'icon': Icons.account_balance_wallet,
-      'text': 'Orange'
-    },
-  ];
   @override
+  State<Home> createState() => _Home();
+}
+
+class _Home extends State<Home> {
+  int myIndex = 0;
+  final List<Map<String, dynamic>> paymentList = [
+    {'icon': Icons.home_outlined, 'text': 'Home'},
+    {'icon': Icons.smartphone, 'text': 'Mobile'},
+    {'icon': Icons.blur_circular, 'text': 'Internet'},
+    {'icon': Icons.home_max_rounded, 'text': 'Braodband'},
+    {'icon': Icons.account_balance_wallet, 'text': 'Credit'},
+  ];
+  final List<Map<String, dynamic>> itemList = [
+    {'icon': Icons.account_circle, 'text': 'To Contact'},
+    {'icon': Icons.credit_card, 'text': 'Card'},
+    {'icon': Icons.refresh, 'text': 'Self'},
+    {'icon': Icons.outbond_rounded, 'text': 'Optional'},
+  ];
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 219, 218, 218),
       appBar: AppBar(
@@ -107,7 +116,7 @@ class Home extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Elements Section',
+                  'Payments',
                   style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -126,15 +135,15 @@ class Home extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 150, // Set the height of the grid
+            height: 120, // Set the height of the grid
             child: ListView(
-              // This next line does the trick.
+              // First grid
               scrollDirection: Axis.horizontal,
-              children: itemList.map((item) {
+              children: paymentList.map((item) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0), // Add padding here
                   child: Container(
-                    width: 160,
+                    width: 120,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius:
@@ -164,7 +173,7 @@ class Home extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Elements Section',
+                  'Transfers',
                   style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -183,7 +192,7 @@ class Home extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 150, // Set the height of the grid
+            height: 120, // Set the height of the grid
             child: ListView(
               // This next line does the trick.
               scrollDirection: Axis.horizontal,
@@ -191,7 +200,7 @@ class Home extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(8.0), // Add padding here
                   child: Container(
-                    width: 160,
+                    width: 120,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius:
@@ -221,7 +230,7 @@ class Home extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Elements Section',
+                  'Section',
                   style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -240,7 +249,7 @@ class Home extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 150, // Set the height of the grid
+            height: 120, // Set the height of the grid
             child: ListView(
               // This next line does the trick.
               scrollDirection: Axis.horizontal,
@@ -248,7 +257,7 @@ class Home extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(8.0), // Add padding here
                   child: Container(
-                    width: 160,
+                    width: 120,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius:
@@ -272,6 +281,18 @@ class Home extends StatelessWidget {
               }).toList(),
             ),
           ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          setState(() {});
+          int myIndex = index;
+        },
+        currentIndex: 2,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.newspaper), label: 'News'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'User')
         ],
       ),
     );
